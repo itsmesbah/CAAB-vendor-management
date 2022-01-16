@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ContractorFormApplication;
+use App\Http\Controllers\Admin\ClassDevelopApp;
+use App\Http\Controllers\Admin\AffidavitController;
+use App\Http\Controllers\Admin\RenewalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,14 +60,32 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 	Route::put('/update/{id}', [ProfileController::class,'update'])->name('profile.update');
 
 	Route::put('/update-password/{id}', [ProfileController::class,'password'])->name('password.update');
+	
+	Route::put('/update-institution/{id}', [ProfileController::class,'institution'])->name('institution.update');
 
 
 	Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
 
 
-Route::get('/contractor-form-application',[ContractorFormApplication::class,'create'])->name('contractor.form.application'); 
+	Route::get('/application',[ContractorFormApplication::class,'index'])->name('application_form'); 
 
-Route::post('/application-store',[ContractorFormApplication::class,'store'])->name('application.store');
+	Route::get('/application-create', [ContractorFormApplication::class,'create'])->name('application.create');
+
+	Route::post('/application-store',[ContractorFormApplication::class,'store'])->name('application.store');
+
+	Route::get('/application-edit', [ContractorFormApplication::class,'edit'])->name('application.edit');
+
+	Route::put('/application-update/{id}', [ContractorFormApplication::class,'update'])->name('application.update');
+
+
+	Route::get('/class-app-create', [ClassDevelopApp::class,'create'])->name('class_app.create');
+
+
+	Route::get('/affidavit-create', [AffidavitController::class,'create'])->name('affidavit.create');
+
+
+	Route::get('/renewal-create', [RenewalController::class,'create'])->name('renewal.create');
+
 
 
 

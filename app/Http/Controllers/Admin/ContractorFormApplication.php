@@ -9,102 +9,67 @@ use DB;
 
 class ContractorFormApplication extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+
+  public function index()
+  {
+
+    $check = DB::table('contractor_form_applications')
+    ->where('contractor_form_applications.user_id', '=',  session('LoggedUser'))
+    ->select('contractor_form_applications.*')
+    ->first();
+
+    if ($check) {
+      return redirect()->route('application.edit');
+    }else{
+      return redirect()->route('application.create');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $data = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
-
-        return view('admin.application.contractor_form_application', $data);
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-$user = $request->session()->all();
+  }
 
 
+  public function create()
+  {
 
-      $application = new ContractorFormApplication;
-
-/*      $application->user_id = $user->id;
-*/      $application->name = $user->name;
-      $application->institution = $user->institution;
-      $application->body = $request->body;
+    $user = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
 
 
-$application->save();
+    return view('admin.institution_app.create', $user);
+
+  }
 
 
-        return view('admin.application.contractor_form_application', compact('application'));
+  public function store(Request $request)
+  {
+
+    $user = Register::where('id','=', session('LoggedUser'))->first();
+
+    $application= array();
+    $application['user_id']= $user->id;
+    $application['body']= $request->body;
+
+    DB::table('contractor_form_applications')->insert($application);
+
+    return redirect()->route('application_form')->with('success', 'Application Save Successfully');
+
+  }
 
 
+  public function edit()
+  {
+    $data = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+    return view('admin.institution_app.edit', $data);
+
+  }
 
 
+ public function update(Request $request, $id)
+ {
+  
+DB::table('contractor_form_applications')
+       ->where('user_id', session('LoggedUser'))
+       ->update(['body' => $request->body]);
 
-    }
+  return redirect()->back()->with('success', 'Application Save Successfully');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+}
 }

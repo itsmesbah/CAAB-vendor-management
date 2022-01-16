@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
 use App\Models\Register;
+use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class RenewalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
-
-        return view('admin.dashboard', $data);
+        //
     }
 
     /**
@@ -27,8 +25,11 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
-    }
+      $user = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+
+      return view('admin.renewal.create', $user);
+  }
 
     /**
      * Store a newly created resource in storage.
