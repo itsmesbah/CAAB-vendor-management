@@ -52,6 +52,7 @@ Route::get('/login',[LoginController::class,'create'])->name('login.create');
 Route::group(['middleware'=>['AuthCheck']], function(){
 
 
+	// Profile Route are here .....
 
 	Route::get('/register',[ResigterController::class,'create'])->name('register.create');
 
@@ -67,6 +68,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 	Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
 
 
+	// Institution Application Route are here ...
+
 	Route::get('/application',[ContractorFormApplication::class,'index'])->name('application_form'); 
 
 	Route::get('/application-create', [ContractorFormApplication::class,'create'])->name('application.create');
@@ -78,10 +81,20 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 	Route::put('/application-update/{id}', [ContractorFormApplication::class,'update'])->name('application.update');
 
 
-	Route::get('/class-app-create', [ClassDevelopApp::class,'create'])->name('class_app.create');
+	// Affidavit Route Are here ...
 
+	Route::get('/affidavit', [AffidavitController::class,'index'])->name('affidavit.index');
 
 	Route::get('/affidavit-create', [AffidavitController::class,'create'])->name('affidavit.create');
+
+	Route::post('/affidavit-store', [AffidavitController::class,'store'])->name('affidavit.store');
+
+	Route::get('/affidavit-show', [AffidavitController::class,'show'])->name('affidavit.show');
+
+
+
+
+	Route::get('/class-app-create', [ClassDevelopApp::class,'create'])->name('class_app.create');
 
 
 	Route::get('/renewal-create', [RenewalController::class,'create'])->name('renewal.create');

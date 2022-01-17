@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Register;
+use App\Models\Admin\Affidavit;
 use Illuminate\Http\Request;
+use DB;
 
 class AffidavitController extends Controller
 {
@@ -40,8 +42,25 @@ class AffidavitController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+      $this->validate($request, array(
+        'income_tax' => 'required',
+        'vat_no' => 'required',
+    ));
+
+
+      $user = Register::where('id','=', session('LoggedUser'))->first();
+
+      $affidavit= array();
+      $affidavit['user_id']= $user->id;
+      $affidavit['income_tax']= $request->income_tax;
+      $affidavit['vat_no']= $request->vat_no;
+
+
+      DB::table('affidavits')->insert($affidavit);
+
+
+      return redirect()->back()->with('success', 'হলফনামা  সংরক্ষিত হয়েছে !! ');
+  }
 
     /**
      * Display the specified resource.
@@ -49,9 +68,13 @@ class AffidavitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
+        $user = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+
+        return view('admin.affidavit.show', $user);
     }
 
     /**

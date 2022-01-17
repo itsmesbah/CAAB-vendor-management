@@ -181,6 +181,14 @@
              </p>
            </a>
          </li>
+           <li class="nav-item">
+             <a href="{{ route('affidavit.show')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+               show
+             </p>
+           </a>
+         </li>
 
          <li class="nav-item">
            <a href="{{ route('application_form')}}" class="nav-link">

@@ -22,7 +22,6 @@
 	</section>
 
 
-
 	<section class="content">
 		<div class="container-fluid">
 			<div class="row">
@@ -45,7 +44,7 @@
 									</div>
 									<div class="col-md-4">
 										<label for="exampleInputEmail1">জাতীয় পরিচয়পত্র নং </label>
-										<input type="text" class="form-control" id="exampleInputEmail1" placeholder="জাতীয় পরিচয়পত্র নং">
+										<input type="text" class="form-control" id="exampleInputEmail1" placeholder="{{ $LoggedUserInfo->nid_no }}" disabled>
 									</div>
 								</div>
 
