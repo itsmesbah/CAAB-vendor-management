@@ -57,19 +57,19 @@
 								<div class="form-group row">
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">বর্তমান ঠিকানাঃ গ্রাম/রাস্তা</label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->present_village); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">ডাকঘর </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->present_post); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">থানা </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->present_upazila); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">জেলা </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->present_zila); ?>" disabled>
 									</div>
 								</div>
 
@@ -77,19 +77,19 @@
 								<div class="form-group row">
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">স্থায়ী ঠিকানাঃ গ্রাম/রাস্তা</label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->parmanent_village); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">ডাকঘর </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->parmanent_post); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">থানা </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->parmanent_upazila); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">জেলা </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->parmanent_zila); ?>" disabled>
 									</div>
 								</div>
 
@@ -97,22 +97,54 @@
 								<div class="form-group row">
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">বয়স</label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->age); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<label for="exampleInputEmail1">পেশা </label>
-										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+										<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->occupation); ?>" disabled>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
 											<label>ধর্ম</label>
-											<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
-										</div>									
+											<select name="religion" class="form-control select2" style="width: 100%;" disabled>
+												<?php if($LoggedUserInfo->religion == 1): ?>
+												<option value="1" selected="selected">ইসলাম</option>
+												<option value="2">হিন্দু</option>
+												<option value="3">বৌদ্ধ</option>
+												<option value="4">খ্রিস্টান</option>
+												<option value="5">অন্যান্য</option>
+												<?php elseif($LoggedUserInfo->religion == 2): ?>
+												<option value="1">ইসলাম</option>
+												<option value="2" selected="selected">হিন্দু</option>
+												<option value="3">বৌদ্ধ</option>
+												<option value="4">খ্রিস্টান</option>
+												<option value="5">অন্যান্য</option>
+												<?php elseif($LoggedUserInfo->religion == 3): ?>
+												<option value="1">ইসলাম</option>
+												<option value="2">হিন্দু</option>
+												<option value="3"  selected="selected">বৌদ্ধ</option>
+												<option value="4">খ্রিস্টান</option>
+												<option value="5">অন্যান্য</option>
+												<?php elseif($LoggedUserInfo->religion == 4): ?>
+												<option value="1">ইসলাম</option>
+												<option value="2">হিন্দু</option>
+												<option value="3">বৌদ্ধ</option>
+												<option value="4" selected="selected">খ্রিস্টান</option>
+												<option value="5">অন্যান্য</option>
+												<?php elseif($LoggedUserInfo->religion == 5): ?>
+												<option value="1">ইসলাম</option>
+												<option value="2">হিন্দু</option>
+												<option value="3">বৌদ্ধ</option>
+												<option value="4">খ্রিস্টান</option>
+												<option value="5" selected="selected">অন্যান্য</option>
+												<?php endif; ?>
+											</select>
+										</div> 								
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
 											<label>জাতীয়তা</label>
-											<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->mother_name); ?>" disabled>
+											<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="<?php echo e($LoggedUserInfo->nationality); ?>" disabled>
 										</div>									
 									</div>
 								</div>
@@ -125,11 +157,27 @@
 								<div class="form-group row">
 									<div class="col-md-4">
 										<label for="exampleInputEmail1">আয়কর সনদ</label>
-										<input type="text" class="form-control" id="exampleInputEmail1" placeholder="আয়কর সনদ">
+										<span class="text-danger"> <?php $__errorArgs = ['income_tax'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+										<input type="text" class="form-control" name="income_tax" id="exampleInputEmail1" placeholder="আয়কর সনদ">
 									</div>
 									<div class="col-md-4">
 										<label for="exampleInputEmail1">ভ্যাট নং </label>
-										<input type="text" class="form-control" id="exampleInputEmail1" placeholder="ভ্যাট নং">
+										<span class="text-danger"> <?php $__errorArgs = ['vat_no'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+										<input type="text" class="form-control" name="vat_no" id="exampleInputEmail1" placeholder="ভ্যাট নং">
 									</div>
 									<div class="col-md-4">
 										<label for="exampleInputEmail1">জাতীয় পরিচয়পত্র নং </label>
