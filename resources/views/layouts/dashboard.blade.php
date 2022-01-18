@@ -174,7 +174,7 @@
              </a>
            </li>
            <li class="nav-item">
-             <a href="{{ route('affidavit.create')}}" class="nav-link">
+             <a href="{{ route('affidavit')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                হলফনামা
@@ -182,38 +182,39 @@
            </a>
          </li>
 
-         <li class="nav-item">
-           <a href="{{ route('application_form')}}" class="nav-link">
-            <i class="nav-icon fas fa-box-open"></i>
-            <p>
-             ঠিকাদার ফরমের আবেদন 
-           </p>
-         </a>
-       </li>
-
-
+      
        <li class="nav-item">
-         <a href="{{ route('class_app.create') }}" class="nav-link">
-          <i class="nav-icon fas fa-pencil-alt"></i>
+         <a href="{{ route('application_form')}}" class="nav-link">
+          <i class="nav-icon fas fa-box-open"></i>
           <p>
-            <!-- শ্রেণী উন্নায়ন আবেদন ফরম --> ভেন্ডর আবেদন 
-          </p>
-        </a>
-      </li>
+           ঠিকাদার ফরমের আবেদন 
+         </p>
+       </a>
+     </li>
 
 
-
-      <li class="nav-item">
-       <a href="{{ route('renewal.create') }}" class="nav-link">
-        <i class="nav-icon fas fa-pen-nib"></i>
+     <li class="nav-item">
+       <a href="{{ route('class_app.create') }}" class="nav-link">
+        <i class="nav-icon fas fa-pencil-alt"></i>
         <p>
-          বাৎসরিক তালিকাভুক্তি নবায়ন ফরম 
+          <!-- শ্রেণী উন্নায়ন আবেদন ফরম --> ভেন্ডর আবেদন 
         </p>
       </a>
     </li>
 
 
-  </ul>
+
+    <li class="nav-item">
+     <a href="{{ route('renewal.create') }}" class="nav-link">
+      <i class="nav-icon fas fa-pen-nib"></i>
+      <p>
+        বাৎসরিক তালিকাভুক্তি নবায়ন ফরম 
+      </p>
+    </a>
+  </li>
+
+
+</ul>
 </nav>
 <!-- /.sidebar-menu -->
 </div>

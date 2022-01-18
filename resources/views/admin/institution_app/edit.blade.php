@@ -110,6 +110,7 @@
                 <!-- /.card-footer -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-default"><i class="fas fa-save"></i> Save</button>
+                  <a href="{{ route('application.show') }} " class="btn btn-default"><i class="fas fa-eye"></i> View</a>
                   <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Send</button>
                   <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
                 </div>

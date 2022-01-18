@@ -307,12 +307,16 @@ unset($__errorArgs, $__bag); ?></span>
 
               <div class="col-md-5">
                 <div class="form-group">
+                  <span class="text-danger"> <?php $__errorArgs = ['nationality'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><?php echo e($message); ?> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
                   <label>জাতীয়তা</label>
-                  <select name="nationality" class="form-control select2" style="width: 100%;">
-                    <option value="1" selected="selected">জন্মসূত্রে বাংলাদেশী</option>
-                    <option value="2">নাগরিক সূত্রে </option>
-                    <option value="3">ব্যবসায়িক সূত্রে</option>
-                  </select>
+                  <input type="text" class="form-control" name="nationality" value="<?php echo e(old('nationality')); ?>" placeholder="জাতীয়তা">
                 </div>                  
               </div>
             </div>

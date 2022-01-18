@@ -28,10 +28,29 @@
 			<div class="row">
 				<!-- left column -->
 				<div class="col-md-12">
+
+
+					@if(Session::get('fail'))
+					<div class="alert alert-danger">
+						{{ Session::get('fail')}}
+					</div>
+					@endif
+
+					@if(Session::get('success'))
+					<div class="alert alert-success">
+						{{ Session::get('success')}}
+					</div>
+					@endif
+
+
+
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<!-- form start -->
-						<form>
+						<form action="{{ route('affidavit.store')}} " method="POST" >
+
+							@csrf
+
 							<div class="card-body">
 
 								<div class="form-group row">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Register;
+use App\Models\Admin\Affidavit;
 use Illuminate\Http\Request;
+use DB;
 
 class AffidavitController extends Controller
 {
@@ -15,8 +17,17 @@ class AffidavitController extends Controller
      */
     public function index()
     {
-        //
-    }
+       $check = DB::table('affidavits')
+       ->where('affidavits.user_id', '=',  session('LoggedUser'))
+       ->select('affidavits.*')
+       ->first();
+
+       if ($check) {
+          return redirect()->route('affidavit.edit');
+      }else{
+          return redirect()->route('affidavit.create');
+      }
+  }
 
     /**
      * Show the form for creating a new resource.
@@ -40,8 +51,25 @@ class AffidavitController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+
+      $this->validate($request, array(
+        'income_tax' => 'required',
+        'vat_no' => 'required',
+    ));
+
+      $user = Register::where('id','=', session('LoggedUser'))->first();
+
+      $affidavit= array();
+      $affidavit['user_id']= $user->id;
+      $affidavit['income_tax']= $request->income_tax;
+      $affidavit['vat_no']= $request->vat_no;
+
+      DB::table('affidavits')->insert($affidavit);
+
+      return redirect()->route('affidavit')->with('success', 'হলফনামা সংযোজন করা হয়েছে !!');
+
+
+  }
 
     /**
      * Display the specified resource.
@@ -49,10 +77,15 @@ class AffidavitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
-    }
+        
+       $user = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+       return view('admin.affidavit.show', $user);
+
+
+   }
 
     /**
      * Show the form for editing the specified resource.
@@ -60,10 +93,14 @@ class AffidavitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
-    }
+       $user = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+
+       return view('admin.affidavit.edit', $user);
+
+   }
 
     /**
      * Update the specified resource in storage.
@@ -74,8 +111,26 @@ class AffidavitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+
+
+      $this->validate($request, array(
+        'income_tax' => 'required',
+        'vat_no' => 'required',
+    ));
+
+      $user = Register::where('id','=', session('LoggedUser'))->first();
+
+      $affidavit= array();
+      $affidavit['income_tax']= $request->income_tax;
+      $affidavit['vat_no']= $request->vat_no;
+
+
+
+      DB::table('affidavits')->where('user_id', $user->id)->update($affidavit);
+
+      return redirect()->back()->with('success', 'হলফনামা পরিবর্তন সম্পন্ন হয়েছে ');
+
+  }
 
     /**
      * Remove the specified resource from storage.

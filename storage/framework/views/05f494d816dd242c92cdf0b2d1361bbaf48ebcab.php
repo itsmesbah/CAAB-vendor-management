@@ -31,7 +31,10 @@
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<!-- form start -->
-						<form>
+						<form action="<?php echo e(route('affidavit.store')); ?> " method="POST" >
+
+							<?php echo csrf_field(); ?>
+
 							<div class="card-body">
 
 								<div class="form-group row">

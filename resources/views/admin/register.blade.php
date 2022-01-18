@@ -189,7 +189,8 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <span class="text-danger"> @error('nationality'){{ $message }} @enderror</span>
-                  <label>জাতীয়তা</label><input type="text" class="form-control" name="nationality" value="{{ old('nationality')}}" placeholder="জাতীয়তা">
+                  <label>জাতীয়তা</label>
+                  <input type="text" class="form-control" name="nationality" value="{{ old('nationality')}}" placeholder="জাতীয়তা">
                 </div>                  
               </div>
             </div>

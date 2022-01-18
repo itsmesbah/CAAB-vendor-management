@@ -62,6 +62,15 @@ class ContractorFormApplication extends Controller
   }
 
 
+  public function show()
+  {
+    $data = ['LoggedUserInfo'=>Register::where('id','=', session('LoggedUser'))->first()];
+
+    return view('admin.institution_app.show', $data);
+
+  }
+
+
  public function update(Request $request, $id)
  {
   

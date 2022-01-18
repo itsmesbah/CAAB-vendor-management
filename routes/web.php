@@ -75,13 +75,26 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 	Route::get('/application-edit', [ContractorFormApplication::class,'edit'])->name('application.edit');
 
+	Route::get('/application-show', [ContractorFormApplication::class,'show'])->name('application.show');
+
 	Route::put('/application-update/{id}', [ContractorFormApplication::class,'update'])->name('application.update');
 
 
 	Route::get('/class-app-create', [ClassDevelopApp::class,'create'])->name('class_app.create');
 
 
+	Route::get('/affidavit', [AffidavitController::class,'index'])->name('affidavit');
+
 	Route::get('/affidavit-create', [AffidavitController::class,'create'])->name('affidavit.create');
+
+	Route::post('/affidavit-store', [AffidavitController::class,'store'])->name('affidavit.store');
+
+	Route::get('/affidavit-edit', [AffidavitController::class,'edit'])->name('affidavit.edit');
+
+	Route::put('/affidavit-update/{id}', [AffidavitController::class,'update'])->name('affidavit.update');
+
+	Route::get('/affidavit-show', [AffidavitController::class,'show'])->name('affidavit.show');
+
 
 
 	Route::get('/renewal-create', [RenewalController::class,'create'])->name('renewal.create');
