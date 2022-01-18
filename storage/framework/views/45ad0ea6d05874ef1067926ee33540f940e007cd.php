@@ -384,22 +384,7 @@ unset($__errorArgs, $__bag); ?></span>
 												<div class="col-md-5">
 													<div class="form-group">
 														<label>জাতীয়তা</label>
-														<select name="nationality" class="form-control select2" style="width: 100%;">
-															
-															<?php if($LoggedUserInfo->nationality == 1): ?>	
-															<option value="1" selected="selected">জন্মসূত্রে বাংলাদেশী</option>
-															<option value="2">নাগরিক সূত্রে </option>
-															<option value="3">ব্যবসায়িক সূত্রে</option>
-															<?php elseif($LoggedUserInfo->nationality == 2): ?>
-															<option value="1" >জন্মসূত্রে বাংলাদেশী</option>
-															<option value="2"selected="selected">নাগরিক সূত্রে </option>
-															<option value="3">ব্যবসায়িক সূত্রে</option>
-															<?php elseif($LoggedUserInfo->nationality == 3): ?>
-															<option value="1" >জন্মসূত্রে বাংলাদেশী</option>
-															<option value="2">নাগরিক সূত্রে </option>
-															<option value="3"selected="selected">ব্যবসায়িক সূত্রে</option>
-															<?php endif; ?>
-														</select>
+														<input type="text" class="form-control" name="nationality" value="<?php echo e($LoggedUserInfo->nationality); ?>" >
 													</div>                  
 												</div>
 											</div>
