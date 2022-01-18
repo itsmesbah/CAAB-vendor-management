@@ -188,12 +188,8 @@
 
               <div class="col-md-5">
                 <div class="form-group">
-                  <label>জাতীয়তা</label>
-                  <select name="nationality" class="form-control select2" style="width: 100%;">
-                    <option value="1" selected="selected">জন্মসূত্রে বাংলাদেশী</option>
-                    <option value="2">নাগরিক সূত্রে </option>
-                    <option value="3">ব্যবসায়িক সূত্রে</option>
-                  </select>
+                  <span class="text-danger"> @error('nationality'){{ $message }} @enderror</span>
+                  <label>জাতীয়তা</label><input type="text" class="form-control" name="nationality" value="{{ old('nationality')}}" placeholder="জাতীয়তা">
                 </div>                  
               </div>
             </div>
